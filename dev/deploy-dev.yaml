@@ -34,7 +34,7 @@ spec:
 
       containers:
       - name: hello
-        image: dockergahana1/hello-world
+        image: dockerghana1/hello-world
         ports:
         - containerPort: 8080
 
@@ -46,26 +46,4 @@ spec:
           limits:
             cpu: "500m"
             memory: "512Mi"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
