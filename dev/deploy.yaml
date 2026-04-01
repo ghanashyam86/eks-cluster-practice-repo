@@ -18,4 +18,4 @@ spec:
       - name: deploy
         image: dockerghana1/hello-world
         ports:
-        - containerPort: 80
+        - containerPort: 8080
