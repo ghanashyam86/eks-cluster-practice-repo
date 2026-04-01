@@ -15,7 +15,7 @@ spec:
         env: dev
     spec:
       containers:
-      - name: deploy1
+      - name: deploy
         image: dockerghana1/emp
         ports:
         - containerPort: 80
