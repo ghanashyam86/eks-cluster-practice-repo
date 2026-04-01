@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: deploy
-        image: dockerghana1/emp
+        image: dockerghana1/hello-world
         ports:
         - containerPort: 80
