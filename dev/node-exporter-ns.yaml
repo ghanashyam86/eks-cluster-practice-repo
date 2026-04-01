@@ -7,33 +7,35 @@ metadata:
     app: node-exporter
 spec:
   selector:
-    matachLabels:
+    matchLabels:
       app: node-exporter
-    template:
-      metadata:
-        labels:
-          app: node-exporter
-      spec:
-        containers:
-        - name: node-exporter
-          image: prom/node-exporter:v1.8.1
-          imagePullPolicy: Always
-          args:
-            - '-path.rootfs=/host'  # Required for EKS and containerized hosts
-          ports:
-          - name: metrics
-            containerPort: 9100
-            hostPort: 9100
-          volumeMounts:
-          - name: root
-            mountPath: /host
-            readOnly: true
-          securityContext:
-            allowPrivilegeEscalation: false
-            readOnlyRootFilesystem: true
-          volumes:
-          - name: root
-            hostPath:
-              path: /
-              type: Directory
-            
+  template:
+    metadata:
+      labels:
+        app: node-exporter
+    spec:
+      hostNetwork: true
+      hostPID: true
+      containers:
+      - name: node-exporter
+        image: prom/node-exporter:v1.8.1
+        imagePullPolicy: Always
+        args:
+        - '--path.rootfs=/host'
+        ports:
+        - name: metrics
+          containerPort: 9100
+          hostPort: 9100
+        volumeMounts:
+        - name: root
+          mountPath: /host
+          readOnly: true
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+
+      volumes:
+      - name: root
+        hostPath:
+          path: /
+          type: Directory
