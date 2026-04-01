@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: dev-deploy
-  namespace: dev
+  namespace: deiv
   labels:
     env: dev
 spec:
@@ -24,3 +24,11 @@ spec:
         image: dockerghana1/hello-world
         ports:
         - containerPort: 8080
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+
