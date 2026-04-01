@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod2
+  labels:
+    env: test
+spec:
+  containers:
+  - name: app2
+    image: dockerghana1/emp
+    ports:
+    - containerPort: 80
