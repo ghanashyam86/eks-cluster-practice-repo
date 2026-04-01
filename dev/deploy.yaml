@@ -15,6 +15,10 @@ spec:
       labels:
         env: dev
     spec:
+      initContainers:
+      - name: init-myservice
+        image: busybox
+        command: ['sh', '-c','echo "Initializing..."; sleep 5']
       containers:
       - name: deploy
         image: dockerghana1/hello-world
